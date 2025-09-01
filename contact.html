@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Café Connecta</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="assets/caféconnectLogo.png">
+
+    <style>
+        :root {
+            --primary-brown: #8B4513;
+            --secondary-brown: #D2691E;
+            --cream: #F5F5DC;
+            --dark-brown: #654321;
+            --gold: #DAA520;
+            --light-gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            background: rgba(139, 69, 19, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cream) !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--cream) !important;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            color: var(--cream);
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--cream);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .contact-info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            background: rgba(139, 69, 19, 0.1);
+            border-radius: 50%;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-control {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+        }
+
+        .btn-contact {
+            background: var(--primary-brown);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-contact:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-img {
+            height: 200px;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-brown);
+            font-size: 4rem;
+        }
+
+        .team-content {
+            padding: 25px;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--cream);
+            color: var(--primary-brown);
+            border-radius: 50%;
+            line-height: 40px;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-brown);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .business-hours {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hours-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            color: var(--primary-brown);
+            font-weight: 600;
+        }
+
+        .faq-section {
+            background: linear-gradient(45deg, var(--cream), #ffffff);
+            padding: 80px 0;
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            padding: 20px;
+            border-radius: 10px !important;
+            margin-bottom: 10px;
+            background: white;
+            border: 1px solid #eee;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-brown);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-brown);
+        }
+
+        .footer {
+            background: var(--primary-brown);
+            color: var(--cream);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-brown);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+  <img src="assets/caféconnectLogo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color: var(--cream);"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="#contact-form">Get In Touch</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hero-content text-center">
+                        <h1 class="hero-title">Get In Touch</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Contact</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-5" style="padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Contact Information</h2>
+                    <p class="text-center mb-5">We'd love to hear from you. Choose the most convenient way to get in touch with us.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Our Location</h4>
+                        <p>The Second Eye Resort<br>N14 Between Wrenichville and Kagung<br>Kuruman, 8460</p>
+                        <a href="#map" class="btn btn-outline-primary mt-3">View on Map</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone Numbers</h4>
+                        <p>
+                            <a href="tel:0534920494" class="text-decoration-none text-dark">053 492 0494</a><br>
+                            <a href="tel:0849637655" class="text-decoration-none text-dark">084 963 7655</a>
+                        </p>
+                        <a href="tel:0534920494" class="btn btn-outline-primary mt-3">Call Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Address</h4>
+                        <p>
+                            <a href="mailto:info@ermog.co.za" class="text-decoration-none text-dark">info@ermog.co.za</a><br>
+                            <a href="mailto:bmogogu@ermog.co.za" class="text-decoration-none text-dark">bmogogu@ermog.co.za</a>
+                        </p>
+                        <a href="mailto:info@ermog.co.za" class="btn btn-outline-primary mt-3">Send Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Find Us</h2>
+                    <p class="text-center mb-5">Visit us at our convenient location between Wrenichville and Kagung</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="map-container">
+                        <!-- Embedded Google Map -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55201.37211736704!2d23.41413329492186!3d-27.534499999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c7c71c467636f37%3A0xe8f2b28df9b8c140!2sKuruman%2C%208460!5e0!3m2!1sen!2sza!4v1684838997895!5m2!1sen!2sza" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Business Hours -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="contact-form" id="contact-form">
+                        <h3 class="mb-4">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-contact">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="business-hours">
+                        <h3 class="mb-4">Business Hours</h3>
+                        <ul class="hours-list">
+                            <li>
+                                <span>Monday</span>
+                                <span class="highlight">7:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span>Tuesday</span>
+                                <span class="highlight">7:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span>Wednesday</span>
+                                <span class="highlight">7:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span>Thursday</span>
+                                <span class="highlight">7:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span>Friday</span>
+                                <span class="highlight">7:00 AM - 8:00 PM</span>
+                            </li>
+                            <li>
+                                <span>Saturday</span>
+                                <span class="highlight">8:00 AM - 4:00 PM</span>
+                            </li>
+                            <li>
+                                <span>Sunday</span>
+                                <span class="highlight">9:00 AM - 2:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 business-hours">
+                        <h3 class="mb-4">Emergency Contact</h3>
+                        <p>For urgent matters outside business hours, please call:</p>
+                        <p class="h5 highlight">084 963 7655</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Our Team</h2>
+                    <p class="text-center mb-5">Get to know the people behind Café Connecta</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-content">
+                            <h4>Boitumelo Mogohu</h4>
+                            <p class="text-primary">Founder & Manager</p>
+                            <p>For business meetings and creative inspiration</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="mailto:bmogogu@ermog.co.za"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-content">
+                            <h4>Sarah Johnson</h4>
+                            <p class="text-primary">Head Barista</p>
+                            <p>Certified coffee expert with 8 years of experience</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-content">
+                            <h4>Michael Williams</h4>
+                            <p class="text-primary">Operations Manager</p>
+                            <p>Ensuring everything runs smoothly at Café Connecta</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What are your opening hours?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We are open from 7:00 AM to 6:00 PM Monday to Thursday, 7:00 AM to 8:00 PM on Fridays, 8:00 AM to 4:00 PM on Saturdays, and 9:00 AM to 2:00 PM on Sundays.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Do you take reservations for large groups?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we welcome reservations for large groups and business meetings. Please call us at least 24 hours in advance to make arrangements for groups larger than 6 people.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Do you offer catering services?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we provide catering services for business meetings and events. We offer a variety of coffee packages, pastries, sandwiches, and light lunch options. Contact us for custom catering requests.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Is there parking available?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we have ample parking space available for our customers at The Second Eye Resort where we are located.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <i class="fas fa-coffee me-2"></i>
+                        <span class="h5 mb-0">Café Connecta</span>
+                    </div>
+                    <p>&copy; 2023 Café Connecta. All rights reserved. EST. 2021</p>
+                    <p class="small">Where Coffee Meets Business | We Make Your Day</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(139, 69, 19, 1)';
+                backToTop.classList.add('active');
+            } else {
+                navbar.style.background = 'rgba(139, 69, 19, 0.95)';
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            if (name && email && message) {
+                // In a real application, you would send the form data to a server here
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

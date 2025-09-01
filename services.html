@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Café Connecta</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/caféconnectLogo.png">
+
+    <style>
+        :root {
+            --primary-brown: #8B4513;
+            --secondary-brown: #D2691E;
+            --cream: #F5F5DC;
+            --dark-brown: #654321;
+            --gold: #DAA520;
+            --light-gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            background: rgba(139, 69, 19, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cream) !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--cream) !important;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            color: var(--cream);
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--cream);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+            color: var(--gold);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .price-tag {
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .btn-service {
+            background: var(--primary-brown);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-service:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .features-section {
+            background: linear-gradient(45deg, var(--cream), #ffffff);
+            padding: 100px 0;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 20px;
+        }
+
+        .process-section {
+            padding: 100px 0;
+            background: var(--dark-brown);
+            color: white;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--dark-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .process-connector {
+            position: absolute;
+            top: 30px;
+            right: -30%;
+            width: 60%;
+            height: 2px;
+            background: var(--gold);
+            z-index: 1;
+        }
+
+        .process-step:last-child .process-connector {
+            display: none;
+        }
+
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            padding: 20px;
+            border-radius: 10px !important;
+            margin-bottom: 10px;
+            background: white;
+            border: 1px solid #eee;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-brown);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-brown);
+        }
+
+        .cta-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .footer {
+            background: var(--primary-brown);
+            color: var(--cream);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-brown);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .process-connector {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+  <img src="assets/caféconnectLogo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color: var(--cream);"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="#order">Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hero-content text-center">
+                        <h1 class="hero-title">Our Services</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Services</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5" style="padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">What We Offer</h2>
+                    <p class="text-center mb-5">At Café Connecta, we provide a variety of services to meet your business and personal needs</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Premium Coffee -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Premium Coffee">
+                        </div>
+                        <div class="service-content">
+                            <i class="fas fa-coffee service-icon"></i>
+                            <span class="price-tag">From R35</span>
+                            <h4 class="mb-3">Premium Coffee</h4>
+                            <p class="mb-4">Fresh hand-roasted 100% Arabica beans, creating unique coffee blends selected for their freshness and richness of flavor.</p>
+                            <ul class="mb-4">
+                                <li>Espresso & Specialty Drinks</li>
+                                <li>Single-Origin Selections</li>
+                                <li>Custom Blends</li>
+                                <li>Cold Brew Options</li>
+                            </ul>
+                            <a href="#order" class="btn btn-service">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business Meetings -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Business Meetings">
+                        </div>
+                        <div class="service-content">
+                            <i class="fas fa-handshake service-icon"></i>
+                            <span class="price-tag">Packages Available</span>
+                            <h4 class="mb-3">Business Meetings</h4>
+                            <p class="mb-4">Perfect setting for breakfast and lunch meetings with free WiFi, creating an inviting atmosphere for productive conversations.</p>
+                            <ul class="mb-4">
+                                <li>Private Meeting Spaces</li>
+                                <li>A/V Equipment Available</li>
+                                <li>Catering Options</li>
+                                <li>Reservation Priority</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wholesale Coffee -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wholesale Coffee">
+                        </div>
+                        <div class="service-content">
+                            <i class="fas fa-shipping-fast service-icon"></i>
+                            <span class="price-tag">Bulk Pricing</span>
+                            <h4 class="mb-3">Wholesale Coffee</h4>
+                            <p class="mb-4">We supply wholesale ground coffee and beans nationwide across South Africa, delivered fresh to your doorstep.</p>
+                            <ul class="mb-4">
+                                <li>Office Coffee Solutions</li>
+                                <li>Custom Branding Options</li>
+                                <li>Regular Delivery Schedules</li>
+                                <li>Equipment Rental Available</li>
+                            </ul>
+                            <a href="#order" class="btn btn-service">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food & Beverages -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Food & Beverages">
+                        </div>
+                        <div class="service-content">
+                            <i class="fas fa-utensils service-icon"></i>
+                            <span class="price-tag">From R25</span>
+                            <h4 class="mb-3">Food & Beverages</h4>
+                            <p class="mb-4">Great tea offerings, freshly baked goods, and a variety of food options to complement your coffee experience.</p>
+                            <ul class="mb-4">
+                                <li>Fresh Pastries & Sandwiches</li>
+                                <li>Specialty Teas & Refreshments</li>
+                                <li>Healthy Options Available</li>
+                                <li>Seasonal Specials</li>
+                            </ul>
+                            <a href="#order" class="btn btn-service">View Menu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Printing Services -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1587496679742-bad50295f3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Printing Services">
+                        </div>
+                        <div class="service-content">
+                            <i class="fas fa-print service-icon"></i>
+                            <span class="price-tag">Affordable Rates</span>
+                            <h4 class="mb-3">Printing Services</h4>
+                            <p class="mb-4">We now offer printing facilities for your business needs, making it convenient for all your office requirements.</p>
+                            <ul class="mb-4">
+                                <li>Document Printing & Copying</li>
+                                <li>Binding & Lamination</li>
+                                <li>Business Card Printing</li>
+                                <li>Express Service Available</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-service">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Free WiFi -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Free WiFi">
+                        </div>
+                        <div class="service-content">
+                            <i class="fas fa-wifi service-icon"></i>
+                            <span class="price-tag">Complimentary</span>
+                            <h4 class="mb-3">Free WiFi</h4>
+                            <p class="mb-4">Complimentary high-speed internet access for all customers, perfect for turning conversations into productive sessions.</p>
+                            <ul class="mb-4">
+                                <li>High-Speed Connectivity</li>
+                                <li>Secure Network</li>
+                                <li>Power Outlets Available</li>
+                                <li>No Time Limits</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-service">Get Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Why Choose Our Services</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-leaf feature-icon"></i>
+                        <h4>Sustainable Sourcing</h4>
+                        <p>We ethically source our coffee beans from sustainable farms that practice environmentally friendly farming.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-award feature-icon"></i>
+                        <h4>Quality Guarantee</h4>
+                        <p>We never compromise on quality, ensuring every cup of coffee meets our high standards of excellence.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-clock feature-icon"></i>
+                        <h4>Quick Service</h4>
+                        <p>We value your time with efficient service whether you're grabbing a quick coffee or hosting a meeting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title text-white">How It Works</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <div class="process-connector"></div>
+                        <h4>Choose Service</h4>
+                        <p>Select from our range of services that best fits your needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <div class="process-connector"></div>
+                        <h4>Place Order</h4>
+                        <p>Contact us or visit our café to place your order or reservation.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <h4>Enjoy Experience</h4>
+                        <p>Sit back, relax, and enjoy the Café Connecta experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Do you offer catering for business meetings?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we provide catering options for business meetings. We offer a variety of coffee packages, pastries, sandwiches, and light lunch options. Please contact us at least 24 hours in advance to arrange catering for your meeting.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What are your wholesale coffee options?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer several wholesale options including whole bean coffee, ground coffee customized to your brewing equipment, and single-serve options. We provide flexible delivery schedules and volume discounts for regular orders.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    How do I reserve a meeting space?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can reserve a meeting space by calling us directly at 053 492 0494 or by emailing info@ermog.co.za. We recommend booking at least 24 hours in advance to ensure availability, especially for larger groups.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What printing services do you offer?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer black and white and color printing, copying, scanning, binding, and lamination services. We can handle documents from standard letter size to A3 format. For large print jobs, we recommend contacting us in advance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="mb-4">Ready to Experience Our Services?</h2>
+                    <p class="lead mb-4">Visit us today or contact us to discuss how we can meet your needs</p>
+                    <a href="contact.html" class="btn btn-custom btn-lg me-3">Contact Us</a>
+                    <a href="tel:0534920494" class="btn btn-outline-light btn-lg">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <i class="fas fa-coffee me-2"></i>
+                        <span class="h5 mb-0">Café Connecta</span>
+                    </div>
+                    <p>&copy; 2023 Café Connecta. All rights reserved. EST. 2021</p>
+                    <p class="small">Where Coffee Meets Business | We Make Your Day</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(139, 69, 19, 1)';
+                backToTop.classList.add('active');
+            } else {
+                navbar.style.background = 'rgba(139, 69, 19, 0.95)';
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Simple animation for service cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach((card, index) => {
+                // Add delay based on index for staggered animation
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

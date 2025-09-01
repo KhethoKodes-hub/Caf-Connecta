@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Connecta - Where Coffee Meets Business</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/caféconnectLogo.png">
+
+    <style>
+        :root {
+            --primary-brown: #8B4513;
+            --secondary-brown: #D2691E;
+            --cream: #F5F5DC;
+            --dark-brown: #654321;
+            --gold: #DAA520;
+            --light-gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background: rgba(139, 69, 19, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cream) !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--cream) !important;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%),
+             url('../assets/coffee.png');
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(245,245,220,0.1)"/><circle cx="80" cy="80" r="3" fill="rgba(245,245,220,0.05)"/><circle cx="40" cy="70" r="1" fill="rgba(245,245,220,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            color: var(--cream);
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            animation: slideInRight 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .btn-custom {
+            background: var(--gold);
+            color: var(--dark-brown);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--light-gold);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-custom:hover::before {
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: var(--dark-brown);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover .service-icon {
+            transform: rotateY(180deg);
+            color: var(--gold);
+        }
+
+        .about-section {
+            background: linear-gradient(45deg, var(--cream), #ffffff);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coffee-bean {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-brown);
+            border-radius: 50%;
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        .coffee-bean:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .coffee-bean:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .coffee-bean:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .contact-section {
+            background: var(--dark-brown);
+            color: var(--cream);
+            padding: 100px 0;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .footer {
+            background: var(--primary-brown);
+            color: var(--cream);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .coffee-steam {
+            position: relative;
+        }
+
+        .coffee-steam::before {
+            content: '☕';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: steam 2s ease-in-out infinite;
+        }
+
+        @keyframes steam {
+            0%, 100% { opacity: 0.7; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Special Offers Section */
+        .offers-section {
+            background: var(--cream);
+            padding: 100px 0;
+        }
+
+        .offer-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .offer-img {
+            height: 200px;
+            background: var(--primary-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .offer-content {
+            padding: 20px;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(to right, var(--primary-brown), var(--secondary-brown));
+            padding: 100px 0;
+            color: white;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--dark-brown);
+            font-weight: bold;
+        }
+
+        /* Coffee Gallery */
+        .gallery-section {
+            padding: 100px 0;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-brown);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-5px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+  <img src="assets/caféconnectLogo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color: var(--cream);"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="#offers">Special Offers</a>
+                    </li>-->
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="coffee-bean"></div>
+        <div class="coffee-bean"></div>
+        <div class="coffee-bean"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Where Coffee<br>Meets Business</h1>
+                        <p class="hero-subtitle">Connecting Creative Minds Since 2021</p>
+                        <p class="lead mb-4">Spreading positivity by serving happiness in every cup, one community at a time.</p>
+                        <a href="#about" class="btn btn-custom btn-lg me-3">
+                            <span>Discover More</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">
+                            <span>Visit Us</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="coffee-steam">
+                        <i class="fas fa-mug-hot" style="font-size: 15rem; color: var(--cream); opacity: 0.8;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title animate-on-scroll">About Café Connecta</h2>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-on-scroll">
+                    <h3 class="mb-4" style="color: var(--primary-brown);">Our Story</h3>
+                    <p class="mb-4">Café Connecta is a hotspot for breakfast and lunch meetings, conveniently situated at The Second Eye Resort on the N14 between Wrenichville and Kagung, Kuruman.</p>
+                    <p class="mb-4">We have created a wonderful space to reach people and to connect with people. Because life is about connecting - connecting to people, emotions, yourself, things that make you happy and make you grow, things like a good cup of coffee, a better cup of coffee.</p>
+                    <div class="row text-center mt-5">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <i class="fas fa-heart service-icon"></i>
+                                <h5>Love</h5>
+                                <p>Making it the primary driving force in our everyday service</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <i class="fas fa-chart-line service-icon"></i>
+                                <h5>Growth</h5>
+                                <p>Continuously striving to become better at what we do</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <i class="fas fa-users service-icon"></i>
+                                <h5>Connect</h5>
+                                <p>Where creative minds meet and collaborate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="text-center">
+                        <div style="background: var(--primary-brown); padding: 3rem; border-radius: 20px; color: var(--cream);">
+                            <h4 class="mb-3">Our Mission</h4>
+                            <p class="mb-4">To spread positivity by serving happiness in every cup, one community at a time.</p>
+                            <h4 class="mb-3">Our Vision</h4>
+                            <p>To establish Café Connecta as the preferred provider of the finest Specialty Coffee's, while maintaining our uncompromising core values & principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title animate-on-scroll">Our Services</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-hover animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-coffee service-icon"></i>
+                            <h5 class="card-title">Premium Coffee</h5>
+                            <p class="card-text">Fresh hand-roasted 100% Arabica beans, creating unique coffee blends selected for their freshness and richness of flavor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-hover animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-handshake service-icon"></i>
+                            <h5 class="card-title">Business Meetings</h5>
+                            <p class="card-text">Perfect setting for breakfast and lunch meetings with free WiFi, creating an inviting atmosphere for productive conversations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-hover animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shipping-fast service-icon"></i>
+                            <h5 class="card-title">Wholesale Coffee</h5>
+                            <p class="card-text">We supply wholesale ground coffee and beans nationwide across South Africa, delivered fresh to your doorstep.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-hover animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-utensils service-icon"></i>
+                            <h5 class="card-title">Food & Beverages</h5>
+                            <p class="card-text">Great tea offerings, freshly baked goods, and a variety of food options to complement your coffee experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-hover animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-print service-icon"></i>
+                            <h5 class="card-title">Printing Services</h5>
+                            <p class="card-text">We now offer printing facilities for your business needs, making it convenient for all your office requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-hover animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-wifi service-icon"></i>
+                            <h5 class="card-title">Free WiFi</h5>
+                            <p class="card-text">Complimentary high-speed internet access for all customers, perfect for turning conversations into productive sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="offers" class="offers-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title animate-on-scroll">Special Offers</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="offer-card">
+                        <div class="offer-img">
+                            <i class="fas fa-mug-hot"></i>
+                            <div class="offer-badge">20% OFF</div>
+                        </div>
+                        <div class="offer-content">
+                            <h4>Morning Bliss</h4>
+                            <p>Enjoy 20% off on all coffee beverages from 7 AM to 10 AM on weekdays.</p>
+                            <a href="#" class="btn btn-custom btn-sm">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="offer-card">
+                        <div class="offer-img">
+                            <i class="fas fa-users"></i>
+                            <div class="offer-badge">15% OFF</div>
+                        </div>
+                        <div class="offer-content">
+                            <h4>Business Meeting Package</h4>
+                            <p>Special discount for business meetings with complimentary printing services.</p>
+                            <a href="#" class="btn btn-custom btn-sm">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="offer-card">
+                        <div class="offer-img">
+                            <i class="fas fa-coffee"></i>
+                            <div class="offer-badge">BUY 1 GET 1</div>
+                        </div>
+                        <div class="offer-content">
+                            <h4>Happy Hour</h4>
+                            <p>Buy one specialty coffee and get one free from 3 PM to 5 PM every day.</p>
+                            <a href="#" class="btn btn-custom btn-sm">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section 
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title text-white animate-on-scroll">What Our Customers Say</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "The perfect blend of excellent coffee and a productive environment. I've had my most successful business meetings at Café Connecta."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">JD</div>
+                            <div>
+                                <h5>John Doe</h5>
+                                <p>Business Consultant</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Their wholesale coffee beans are exceptional! My office can't get enough of Café Connecta's premium blends."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">SM</div>
+                            <div>
+                                <h5>Sarah Miller</h5>
+                                <p>Office Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "The atmosphere, the service, and most importantly, the coffee - everything is perfect for getting work done."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">RJ</div>
+                            <div>
+                                <h5>Robert Johnson</h5>
+                                <p>Freelancer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Coffee Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title animate-on-scroll">Our Coffee Gallery</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="assets/coffee shared.png" alt="Coffee Preparation">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="assets/coffeeplate.png" alt="Café Interior">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Coffee Meeting">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="assets/coffee.png" alt="Coffee machine">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title text-white animate-on-scroll">Get In Touch</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info animate-on-scroll">
+                        <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--gold);"></i>
+                        <h5>Location</h5>
+                        <p>The Second Eye Resort<br>N14 Between Wrenichville and Kagung<br>Kuruman, 8460</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info animate-on-scroll">
+                        <i class="fas fa-phone fa-2x mb-3" style="color: var(--gold);"></i>
+                        <h5>Phone</h5>
+                        <p><a href="tel:0534920494" class="text-light text-decoration-none">053 492 0494</a><br>
+                        <a href="tel:0849637655" class="text-light text-decoration-none">084 963 7655</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-info animate-on-scroll">
+                        <i class="fas fa-envelope fa-2x mb-3" style="color: var(--gold);"></i>
+                        <h5>Email</h5>
+                        <p><a href="mailto:info@ermog.co.za" class="text-light text-decoration-none">info@ermog.co.za</a><br>
+                        <a href="mailto:bmogogu@ermog.co.za" class="text-light text-decoration-none">bmogogu@ermog.co.za</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h4 class="mb-4">Contact Person</h4>
+                    <div class="contact-info d-inline-block">
+                        <i class="fas fa-user-tie fa-2x mb-3" style="color: var(--gold);"></i>
+                        <h5>Boitumelo Mogohu</h5>
+                        <p>For business meetings and creative inspiration</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form animate-on-scroll">
+                        <h4 class="text-center mb-4">Send Us a Message</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-custom">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <i class="fas fa-coffee me-2"></i>
+                        <span class="h5 mb-0">Café Connecta</span>
+                    </div>
+                    <p>&copy; 2023 Café Connecta. All rights reserved. EST. 2021</p>
+                    <p class="small">Where Coffee Meets Business | We Make Your Day</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(139, 69, 19, 1)';
+                backToTop.classList.add('active');
+            } else {
+                navbar.style.background = 'rgba(139, 69, 19, 0.95)';
+                backToTop.classList.remove('active');
+            }
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add some interactive coffee beans
+        function createFloatingBean() {
+            const bean = document.createElement('div');
+            bean.className = 'coffee-bean';
+            bean.style.position = 'fixed';
+            bean.style.left = Math.random() * window.innerWidth + 'px';
+            bean.style.top = window.innerHeight + 'px';
+            bean.style.zIndex = '1';
+            bean.style.animation = 'floatUp 8s linear forwards';
+            
+            document.body.appendChild(bean);
+            
+            setTimeout(() => {
+                bean.remove();
+            }, 8000);
+        }
+
+        // Add CSS for floating beans animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-${window.innerHeight + 100}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create floating beans periodically
+        setInterval(createFloatingBean, 3000);
+
+        // Add click effect to buttons
+        document.querySelectorAll('.btn-custom').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                ripple.style.left = (e.clientX - e.target.offsetLeft) + 'px';
+                ripple.style.top = (e.clientY - e.target.offsetTop) + 'px';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>
