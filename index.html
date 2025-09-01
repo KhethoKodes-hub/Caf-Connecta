@@ -84,8 +84,9 @@
 
         .hero-section {
             height: 100vh;
-            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%),
-             url('../assets/coffee.png');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background-size: cover;
             display: flex;
             align-items: center;
             position: relative;
@@ -119,6 +120,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             animation: slideInLeft 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-subtitle {
@@ -126,6 +128,7 @@
             font-size: 2rem;
             margin-bottom: 2rem;
             animation: slideInRight 1s ease-out 0.3s both;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         @keyframes slideInLeft {
@@ -485,7 +488,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-  <img src="assets/caféconnectLogo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+                <img src="assets/caféconnectLogo.png" alt="Café Connecta Logo" width="60" height="60" class="d-inline-block align-text-top me-2">
+                Café Connecta
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color: var(--cream);"></i></span>
@@ -501,12 +505,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="services.html">Services</a>
                     </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#offers">Special Offers</a>
-                    </li>-->
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Testimonials</a>
-                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
@@ -714,61 +712,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section 
-    <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="section-title text-white animate-on-scroll">What Our Customers Say</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "The perfect blend of excellent coffee and a productive environment. I've had my most successful business meetings at Café Connecta."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">JD</div>
-                            <div>
-                                <h5>John Doe</h5>
-                                <p>Business Consultant</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "Their wholesale coffee beans are exceptional! My office can't get enough of Café Connecta's premium blends."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">SM</div>
-                            <div>
-                                <h5>Sarah Miller</h5>
-                                <p>Office Manager</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "The atmosphere, the service, and most importantly, the coffee - everything is perfect for getting work done."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">RJ</div>
-                            <div>
-                                <h5>Robert Johnson</h5>
-                                <p>Freelancer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
     <!-- Coffee Gallery Section -->
     <section class="gallery-section">
         <div class="container">
@@ -780,12 +723,12 @@
             <div class="row">
                 <div class="col-md-3 col-6 animate-on-scroll">
                     <div class="gallery-item">
-                        <img src="assets/coffee shared.png" alt="Coffee Preparation">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Coffee Preparation">
                     </div>
                 </div>
                 <div class="col-md-3 col-6 animate-on-scroll">
                     <div class="gallery-item">
-                        <img src="assets/coffeeplate.png" alt="Café Interior">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Café Interior">
                     </div>
                 </div>
                 <div class="col-md-3 col-6 animate-on-scroll">
@@ -795,7 +738,7 @@
                 </div>
                 <div class="col-md-3 col-6 animate-on-scroll">
                     <div class="gallery-item">
-                        <img src="assets/coffee.png" alt="Coffee machine">
+                        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Coffee Beans">
                     </div>
                 </div>
             </div>
